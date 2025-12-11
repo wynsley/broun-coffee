@@ -1,50 +1,45 @@
-'use strict'
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Promotions', {
-      idPromotions: {
+      id: {
+        allowNull: false,
+        primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
-        allowNull: false
       },
-      type: {
-        type: Sequelize.STRING
+      title: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       description: {
-        type: Sequelize.STRING(200),
-        allowNull: false
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
-      discount: {
+      discountPercentage: {
         type: Sequelize.FLOAT,
-        allowNull: false
-      },
-      promotionalCode: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       startDate: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
       endDate: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+        type: Sequelize.DATE
       }
-    })
+    });
   },
-  async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('Promotions')
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Promotions');
   }
-}
+};

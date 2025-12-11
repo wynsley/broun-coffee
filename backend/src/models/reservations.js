@@ -1,60 +1,27 @@
-'use strict'
-const {
-  Model
-} = require('sequelize')
+'use strict';
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class reservations extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate (models) {
+  class Reservations extends Model {
+    static associate(models) {
       // define association here
     }
   }
-  reservations.init({
-    idReservations: {
+  Reservations.init({
+    id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
     },
-    clientName: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    phone: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    reservationdate: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    reservationTime: {
-      type: DataTypes.TIME,
-      allowNull: false
-    },
-    numberPeople: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    state: {
-      type: DataTypes.STRING(20),
-      allowNull: false
-    },
-    confirmationCode: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    }
+    customerName: DataTypes.STRING,
+    customerEmail: DataTypes.STRING,
+    customerPhone: DataTypes.STRING,
+    numberOfPeople: DataTypes.INTEGER,
+    reservationDate: DataTypes.DATE,
+    status: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'reservations'
-  })
-  return reservations
-}
+    modelName: 'Reservations',
+  });
+  return Reservations;
+};

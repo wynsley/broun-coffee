@@ -1,55 +1,43 @@
-'use strict'
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Orders', {
-      idOrders: {
+      id: {
+        allowNull: false,
+        primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
-        allowNull: false
       },
-      orderDate: {
-        type: Sequelize.DATE,
-        allowNull: false
+      userId: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'idUser',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       total: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false,
       },
-      state: {
-        type: Sequelize.STRING(30),
-        allowNull: false
-      },
-      deliveryType: {
-        type: Sequelize.STRING(30),
-        allowNull: false
-      },
-      deliveryAddress: {
-        type: Sequelize.STRING(100),
-        allowNull: false
-      },
-      notes: {
-        type: Sequelize.STRING(200),
-        allowNull: false
-      },
-      deliveryDate: {
-        type: Sequelize.DATE,
-        allowNull: false
+      status: {
+        type: Sequelize.STRING,
+        defaultValue: 'pending',
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+        type: Sequelize.DATE
       }
-    })
+    });
   },
-  async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('Orders')
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Orders');
   }
-}
+};
