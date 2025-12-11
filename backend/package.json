@@ -21,10 +21,13 @@
     "sequelize": "6.37.7"
   },
   "devDependencies": {
+    "cookie-parser": "1.4.7",
     "nodemon": "3.1.11",
     "standard": "17.1.2"
   },
-  "slintConfig":{
-    "extends": ["./node_modules/standard/slintrc.json"]
+  "slintConfig": {
+    "extends": [
+      "./node_modules/standard/slintrc.json"
+    ]
   }
 }
