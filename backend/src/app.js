@@ -7,8 +7,9 @@ const { sequelize } = require("./models");
 
 // --- IMPORTACIÓN DE RUTAS ---
 
-// 1. Rutas de Autenticación (NUEVO ARCHIVO)
+// 1. Rutas de Autenticación
 const authRoutes = require("./routes/auth.routes");
+const userRoutes = require('./routes/user.routes');
 
 // 2. Rutas de Negocio (Productos y Categorías)
 const productRoutes = require("./routes/product.routes");
@@ -34,6 +35,7 @@ server.use("/", authRoutes);
 // B. Negocio
 server.use("/products", productRoutes);
 server.use("/categories", categoryRoutes);
+server.use('/users', userRoutes);
 
 // C. Ruta de prueba
 server.get("/api-status", (req, res) => {

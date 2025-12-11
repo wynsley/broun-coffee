@@ -79,4 +79,38 @@ const loginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-module.exports = { registerSchema, loginSchema };
+// Esquema para Actualizar Usuario (PUT)
+const updateUserSchema = Joi.object({
+  firstName: Joi.string()
+    .pattern(/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/)
+    .min(2)
+    .max(50),
+  lastName: Joi.string()
+    .pattern(/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/)
+    .min(2)
+    .max(50),
+  phone: Joi.string().pattern(/^\+\d{7,15}$/),
+  birthdate: Joi.date().less(minBirthdate),
+  gender: Joi.string().valid("M", "F", "O"),
+  address: Joi.string().min(3).max(100),
+  // No permitimos actualizar email ni password por aquí por seguridad
+  state: Joi.string().valid("active", "inactive"),
+}).min(1);
+
+// Esquema para Búsqueda de Usuarios
+const searchUserSchema = Joi.object({
+  search: Joi.string().min(1).max(100).optional(),
+});
+
+// Esquema para ID
+const userIdSchema = Joi.object({
+  id: Joi.string().guid({ version: "uuidv4" }).required(),
+});
+
+module.exports = { 
+  registerSchema, 
+  loginSchema, 
+  updateUserSchema, 
+  searchUserSchema,
+  userIdSchema 
+};
