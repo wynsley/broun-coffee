@@ -33,7 +33,7 @@ function ProductCard({ product, onOrder }) {
 
           {/* Imagen central */}
           <div className="flex-1 flex justify-center">
-             <ProductImage src={imagePath} alt={name} />
+            <ProductImage src={imagePath} alt={name} />
           </div>
 
           {/* Precio derecha */}

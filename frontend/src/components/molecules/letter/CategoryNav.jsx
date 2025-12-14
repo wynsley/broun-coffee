@@ -1,27 +1,27 @@
-import { MdCake } from "react-icons/md";
-import { FaCoffee, FaCookie } from "react-icons/fa";
-import { useNavigate, useLocation } from "react-router-dom";
 import { CategoryButton } from "../../atoms/letter/CategoryButton";
+import { FaCoffee, FaCookie, FaBirthdayCake } from "react-icons/fa";
 
-function CategoryNav() {
-  const navigate = useNavigate();
-  const location = useLocation();
+function CategoryNav({ categories, onSelectCategory }) {
+  if (!categories || categories.length === 0) return null;
 
-  const categorias = [
-    { id: "cafes", nombre: "Cafes", icono: <FaCoffee />, ruta: "/letter" },
-    { id: "galletas", nombre: "Galletas", icono: <FaCookie />, ruta: "/LetterPageCookie" },
-    { id: "tortas", nombre: "Tortas", icono: <MdCake />, ruta: "/LetterPageCake" },
-  ];
+  // Función auxiliar para asignar icono según el nombre (opcional)
+  const getIcon = (name) => {
+    const lowerName = name.toLowerCase();
+    if (lowerName.includes('cafe') || lowerName.includes('café')) return <FaCoffee />;
+    if (lowerName.includes('cookie') || lowerName.includes('galleta')) return <FaCookie />;
+    return <FaBirthdayCake />; // Default
+  };
 
   return (
-    <nav className="flex items-center gap-3">
-      {categorias.map((cat) => (
+    <nav className="flex flex-wrap justify-center gap-4 my-8 sticky top-20 z-10 bg-[#FFF0F5] py-4 shadow-sm">
+      {categories.map((cat) => (
         <CategoryButton
-          key={cat.id}
-          icono={cat.icono}
-          nombre={cat.nombre}
-          isActive={location.pathname === cat.ruta}
-          onClick={() => navigate(cat.ruta)}
+          key={cat.idCategory}
+          nombre={cat.name}
+          icono={getIcon(cat.name)}
+          // Usamos onClick para el scroll en lugar de navegar
+          onClick={() => onSelectCategory(cat.idCategory)} 
+          isActive={false} // Puedes manejar estado activo si quieres luego
         />
       ))}
     </nav>

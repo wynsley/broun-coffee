@@ -1,4 +1,4 @@
-const apiFetch = async (route, method, body) => {
+const apiFetch = async (route, method = "GET", body) => {
   try {
     const url = `http://localhost:3000${route}`;
     
@@ -16,25 +16,27 @@ const apiFetch = async (route, method, body) => {
 
     const response = await fetch(url, options);
 
-    // 1. LEER COMO TEXTO PRIMERO (Para ver qué responde realmente)
+    // 1. Leemos el texto crudo primero (para evitar el error JSON.parse)
     const text = await response.text();
 
-    // 2. Si la respuesta falló (404, 500, etc), avisamos y retornamos null
+    // 2. Verificamos si la respuesta fue exitosa
     if (!response.ok) {
-      console.error(`Error API (${response.status}):`, text); 
+      // Si el servidor mandó un error, lo mostramos en consola
+      console.error(`❌ Error API (${response.status}):`, text);
       return null;
     }
 
-    // 3. Si es exitosa, intentar convertir a JSON con seguridad
+    // 3. Intentamos convertir a JSON
     try {
-      return text ? JSON.parse(text) : {}; 
+      // Si está vacío, devolvemos array vacío o objeto vacío
+      return text ? JSON.parse(text) : [];
     } catch (e) {
-      console.warn("El servidor respondió OK pero el contenido no es JSON:", text, e);
+      console.warn("⚠️ El servidor respondió OK pero no es JSON válido:", text, e);
       return null;
     }
 
   } catch (error) {
-    console.error("Error de conexión (Backend apagado o CORS):", error);
+    console.error("🔥 Error de conexión (Backend apagado):", error);
     return null;
   }
 }

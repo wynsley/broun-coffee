@@ -11,7 +11,7 @@ const createProductSchema = Joi.object({
   img: Joi.string().required(),
   stock: Joi.number().integer().min(0).default(0),
   state: Joi.string().valid('Activo', 'Inactivo').required(),
-  // categoryId: Joi.string().guid({ version: 'uuidv4' }).optional()
+  categoryId: Joi.string().guid({ version: 'uuidv4' }).optional()
 });
 
 const updateProductSchema = Joi.object({
