@@ -5,7 +5,6 @@ function Banner() {
   return (
     <section className="relative h-[70vh] md:h-[80vh] w-full overflow-hidden">
 
-      {/* Fondo */}
       <div
         className="absolute inset-0 bg-no-repeat bg-right bg-cover transition-all duration-300"
         style={{
@@ -33,10 +32,10 @@ function Banner() {
           xl:bottom-11 xl:left-58 
           2xl:bottom-12 2xl:left-72
         `}
-        className="hover:scale-125 transition-transform duration-500 hover:-rotate-20"
         data-aos="fade-up"
-        data-aos-duration="1200"
-        data-aos-delay="200"
+        data-aos-duration="1500"
+        data-aos-delay="400"
+        data-aos-easing="ease-out-back"
       />
     </section>
   )

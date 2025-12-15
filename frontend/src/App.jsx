@@ -19,6 +19,7 @@ import { WhatsAppButton } from "./components/atoms/WhatsAppButton"
 // AOS - Animate On Scroll
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { CartProvider } from "./context/CartContext"
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -74,7 +75,7 @@ function App() {
   ]
 
   return (
-    <>
+    <CartProvider>
       <ScrollToTop /> 
       
       <Navbar 
@@ -88,6 +89,7 @@ function App() {
       {registerIsOpen && <ModalRegister setRegisterIsOpen={setRegisterIsOpen} />}
 
       <Routes>
+        <Route path="/carta" element={<LetterPage />} />
         {pages.map((page, i) => (
           <Route
             key={i}
@@ -108,7 +110,7 @@ function App() {
       
       <Footer/>
       <WhatsAppButton />
-    </>
+    </CartProvider>
   )
 }
 
