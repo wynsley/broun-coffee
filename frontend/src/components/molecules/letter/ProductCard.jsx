@@ -12,11 +12,7 @@ function ProductCard({ product, onOrder }) {
   return (
     <article className="bg-[#d6c394] rounded-2xl p-4 shadow-lg flex flex-col h-full relative overflow-hidden transition-transform hover:scale-[1.02] hover:shadow-xl">
       
-      {/* 1. PRECIO FLOTANTE (Corrección Definitiva) */}
-      {/* Usamos 'price' (inglés) para coincidir con el átomo estándar.
-          top-3 right-3: Lo separa un poco del borde.
-          z-40: Lo pone por encima de la imagen y decoración. */}
-      <div className="absolute top-3 right-3 z-40">
+      <div className="absolute top-3 right-3 z-20">
         <PriceTag price={formattedPrice} />
       </div>
 
