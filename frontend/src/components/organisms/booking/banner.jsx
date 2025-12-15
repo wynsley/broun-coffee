@@ -5,7 +5,6 @@ function Banner() {
   return (
     <section className="relative h-[70vh] md:h-[80vh] w-full overflow-hidden">
 
-      {/* Fondo */}
       <div
         className="absolute inset-0 bg-no-repeat bg-right bg-cover transition-all duration-300"
         style={{
