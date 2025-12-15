@@ -9,30 +9,55 @@ function ScheduleCard({
   borderColor, 
   iconBgColor,
   scheduleItems,
-  note 
+  note,
+  ...props
 }) {
   return (
-    <div className={`${bgGradient} rounded-lg p-6 md:p-8 border ${borderColor} transition-transform hover:scale-105 duration-300`}>
-      <ScheduleHeader 
-        icon={icon} 
-        title={title} 
-        bgColor={iconBgColor} 
-      />
+    <div 
+      className={`${bgGradient} rounded-lg p-6 md:p-8 border ${borderColor} transition-transform hover:scale-105 duration-300`}
+      {...props}
+    >
+      {/* Header del card */}
+      <div
+        data-aos="fade"
+        data-aos-duration="800"
+        data-aos-delay="600"
+      >
+        <ScheduleHeader 
+          icon={icon} 
+          title={title} 
+          bgColor={iconBgColor} 
+        />
+      </div>
       
+      {/* Items de horarios - Aparecen en cascada */}
       <div className="space-y-3">
         {scheduleItems.map((item, index) => (
-          <ScheduleItem
+          <div
             key={index}
-            day={item.day}
-            time={item.time}
-            isLast={index === scheduleItems.length - 1}
-            borderColor={item.borderColor}
-            timeColor={item.timeColor}
-          />
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay={700 + (index * 100)}
+          >
+            <ScheduleItem
+              day={item.day}
+              time={item.time}
+              isLast={index === scheduleItems.length - 1}
+              borderColor={item.borderColor}
+              timeColor={item.timeColor}
+            />
+          </div>
         ))}
       </div>
       
-      <ScheduleNote note={note} />
+      {/* Nota final */}
+      <div
+        data-aos="fade"
+        data-aos-duration="800"
+        data-aos-delay="1000"
+      >
+        <ScheduleNote note={note} />
+      </div>
     </div>
   );
 }

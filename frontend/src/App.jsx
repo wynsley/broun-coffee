@@ -1,29 +1,39 @@
 import { Route, Routes, Navigate } from "react-router-dom"
 import { HomePage } from "./components/pages/homePage"
 import { LetterPage } from "./components/pages/letterPage"
-// Eliminamos imports viejos innecesarios
-// import { LetterPageCookie } from "./components/pages/letterPageCookie"
-// import { LetterPageCake } from "./components/pages/letterPageCake"
 import { AbouUsPage } from "./components/pages/aboutUsPage"
 import { BookingPage } from "./components/pages/bookingPage"
 import { ContactPage } from "./components/pages/contactPage"
 import { Navbar } from "./components/organisms/navbar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ModalLogin } from "./components/organisms/modals/modalLogin"
 import { CartShop } from "./components/organisms/modals/modalCartShop"
 import { ModalRegister } from "./components/organisms/modals/modalRegister"
-
+import { ScrollToTop } from "./components/utils/scrollToTop" //scroll animate
 // Tendencies sections
 import { TendenciesCoffee } from "./components/organisms/home/tendenciesCoffee"
 import { TendenciesCokies } from "./components/organisms/home/tendenciesCokies"
 import { TendenciesCakes } from "./components/organisms/home/tendenciesCakes"
 import { Footer } from "./components/organisms/footer"
 import { WhatsAppButton } from "./components/atoms/WhatsAppButton"
+// AOS - Animate On Scroll
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [cartShopOpen, setCartShopOpen] = useState(false)
   const [registerIsOpen, setRegisterIsOpen] = useState(false)
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duración de las animaciones en milisegundos
+      once: false, // Si true, la animación solo ocurre una vez
+      mirror: true, // Si true, anima al hacer scroll hacia arriba también
+      offset: 100, // Offset desde el punto de activación (en px)
+      easing: 'ease-in-out', // Tipo de easing
+    })
+  }, [])
 
   const pages = [
     {
@@ -65,6 +75,8 @@ function App() {
 
   return (
     <>
+      <ScrollToTop /> 
+      
       <Navbar 
         setModalIsOpen={setModalIsOpen}
         setRegisterIsOpen={setRegisterIsOpen}

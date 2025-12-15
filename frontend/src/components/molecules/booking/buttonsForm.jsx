@@ -18,7 +18,7 @@ function Buttons() {
         variant="secondary"
         text={'Reservar'}
         type='submit'
-        className="font-semibold "
+        className="font-semibold cursor-pointer"
 
       />
 

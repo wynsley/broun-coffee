@@ -2,12 +2,15 @@ import { Paragraph } from "../../atoms/paragraph"
 import { Title } from "../../atoms/titles"
 import { BannerBgCurve } from "../bannerBgCurve"
 
-function Article() {
+function Article({ ...props }) {
   const title  = 'Haz tu Reserva'
   const description = `Asegura tu lugar y disfruta de una experiencia sin esperas`
 
   return (
-    <article className="absolute inset-0 flex flex-col justify-center items-start px-6 sm:px-8 md:px-12 lg:px-20 xl:px-32 text-white z-10 pt-20 md:pt-0">
+    <article 
+      className="absolute inset-0 flex flex-col justify-center items-start px-6 sm:px-8 md:px-12 lg:px-20 xl:px-32 text-white z-10 pt-20 md:pt-0"
+      {...props}
+    >
       <Title
         text={title}
         level="h1"

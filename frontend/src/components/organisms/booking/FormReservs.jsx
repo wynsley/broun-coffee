@@ -167,26 +167,48 @@ function Form() {
 
   return (
     <div className="flex flex-col gap-10 items-center mt-10 mb-10 z-[-1]">
-      <Title level="h3" weight="bold" text={title} align="center" />
+      
+      {/* Título principal - Aparece con fade */}
+      <div
+        data-aos="fade-down"
+        data-aos-duration="1000"
+      >
+        <Title level="h3" weight="bold" text={title} align="center" />
+      </div>
 
       {error && <span className="text-red-500 text-sm">{error}</span>}
       {success && <span className="text-green-600 text-sm">{success}</span>}
 
+      {/* Formulario - Aparece con fade-up y opacity 0 a 1 */}
       <form
         onSubmit={handleSubmit}
         className="relative flex flex-col gap-6 p-6 sm:p-10 bg-[#F7F7F7] w-[95%] sm:w-[85%] lg:w-[80%] mx-auto shadow shadow-black rounded"
+        data-aos="fade-up"
+        data-aos-duration="1200"
+        data-aos-delay="200"
       >
-        <Title
-          level="h2"
-          text="Reserva ¡Aquí!"
-          align="center"
-          weight="bold"
-        />
+        {/* Título del formulario */}
+        <div
+          data-aos="fade"
+          data-aos-duration="800"
+          data-aos-delay="400"
+        >
+          <Title
+            level="h2"
+            text="Reserva ¡Aquí!"
+            align="center"
+            weight="bold"
+          />
+        </div>
 
+        {/* Imagen decorativa */}
         <img
           src="/IMG-RESERVS.png"
           alt="imagen de cafés"
           className="absolute w-25 sm:w-40 lg:w-60 top-2 right-2 animate-pulse"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+          data-aos-delay="600"
         />
 
         <FormItem inputVariant="secondary" formFields={formFields} />

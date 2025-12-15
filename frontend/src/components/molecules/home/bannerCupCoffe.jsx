@@ -1,9 +1,9 @@
 function BannerCoffee({
   src = "/CUP-COFFEE.png",
   alt = "Taza de café",
-  // posición base (mobile)
   position = "bottom-10 right-12",
-  className = ""
+  className = "",
+  ...props
 }) {
   return (
     <div
@@ -18,6 +18,7 @@ function BannerCoffee({
                   xl:bottom-18 xl:right-48 xl:w-52 xl:h-52
 
                   ${className}`}
+      {...props}
     >
       <img
         src={src}

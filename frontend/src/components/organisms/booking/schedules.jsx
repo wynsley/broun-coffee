@@ -1,4 +1,3 @@
-
 import { MdBusinessCenter, MdAccessTime } from 'react-icons/md';
 import { Title } from '../../atoms/titles';
 import { Paragraph } from '../../atoms/paragraph';
@@ -23,7 +22,13 @@ function Schedules() {
   return (
     <section id="schedules" className="py-12 px-4 md:py-16 lg:py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-8 md:mb-12">
+        
+        {/* Título y descripción - Aparecen con fade */}
+        <div 
+          className="mb-8 md:mb-12"
+          data-aos="fade-down"
+          data-aos-duration="1000"
+        >
           <Title
             level="h2"
             text={title}
@@ -36,28 +41,48 @@ function Schedules() {
           />
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 lg:p-10">
+        {/* Contenedor de cards */}
+        <div 
+          className="bg-white rounded-lg shadow-lg p-6 md:p-8 lg:p-10"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             
-            <ScheduleCard
-              icon={MdBusinessCenter}
-              title="Horario de Oficina"
-              bgGradient="bg-gradient-to-br from-blue-50 to-blue-100"
-              borderColor="border-blue-200"
-              iconBgColor="bg-blue-500"
-              scheduleItems={officeSchedule}
-              note="Atención presencial y telefónica durante estos horarios."
-            />
+            {/* Card izquierda - Horario de Oficina */}
+            <div
+              data-aos="fade-right"
+              data-aos-duration="1000"
+              data-aos-delay="400"
+            >
+              <ScheduleCard
+                icon={MdBusinessCenter}
+                title="Horario de Oficina"
+                bgGradient="bg-gradient-to-br from-blue-50 to-blue-100"
+                borderColor="border-blue-200"
+                iconBgColor="bg-blue-500"
+                scheduleItems={officeSchedule}
+                note="Atención presencial y telefónica durante estos horarios."
+              />
+            </div>
 
-            <ScheduleCard
-              icon={MdAccessTime}
-              title="Horario 24/7"
-              bgGradient="bg-gradient-to-br from-green-50 to-green-100"
-              borderColor="border-green-200"
-              iconBgColor="bg-green-500"
-              scheduleItems={emergencySchedule}
-              note="Chat en línea, WhatsApp y correo electrónico 24/7."
-            />
+            {/* Card derecha - Horario 24/7 */}
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              data-aos-delay="400"
+            >
+              <ScheduleCard
+                icon={MdAccessTime}
+                title="Horario 24/7"
+                bgGradient="bg-gradient-to-br from-green-50 to-green-100"
+                borderColor="border-green-200"
+                iconBgColor="bg-green-500"
+                scheduleItems={emergencySchedule}
+                note="Chat en línea, WhatsApp y correo electrónico 24/7."
+              />
+            </div>
 
           </div>
         </div>

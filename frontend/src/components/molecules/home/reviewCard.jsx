@@ -1,8 +1,11 @@
 import { Title } from "../../atoms/titles"
 
-function ReviewCard({ title, img, className = "" }) {
+function ReviewCard({ title, img, className = "", ...props }) {
   return (
-    <div className={`relative overflow-hidden rounded-lg shadow-lg group ${className}`}>
+    <div 
+      className={`relative overflow-hidden rounded-lg shadow-lg group ${className}`}
+      {...props}
+    >
       <img 
         src={img} 
         alt={title}
@@ -15,8 +18,7 @@ function ReviewCard({ title, img, className = "" }) {
           level="h4"
           align="center"
           variant="primary"
-          />
-          
+        />
       </div>
     </div>
   )

@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { TendenciesCard } from "../../molecules/home/homeTendeciesCard";
 
 function TendenciesCokies() {
   const trackRef = useRef(null);
   const speed = 0.4; // px por frame
 
-  const [items, setItems] = useState([
+  const tendenciesCokies = [
     {
       img: "/TEN-COFFEE1.png",
       title: "Café Espresso",
@@ -30,7 +30,7 @@ function TendenciesCokies() {
       description:
         "Dulce y chocolatoso, combina espresso con cacao y un toque de leche.",
     },
-  ]);
+  ];
 
   useEffect(() => {
     const track = trackRef.current;
@@ -39,24 +39,13 @@ function TendenciesCokies() {
 
     const animate = () => {
       x -= speed;
-      track.style.transform = `translateX(${x}px)`;
 
-      const firstCard = track.children[0];
-      if (!firstCard) return;
-
-      // ancho real de una card + gap-8 (32px)
-      const cardWidth = firstCard.offsetWidth + 32;
-
-      // cuando la primera card sale completamente
-      if (Math.abs(x) >= cardWidth) {
-        x += cardWidth;
-
-        setItems((prev) => {
-          const [first, ...rest] = prev;
-          return [...rest, first];
-        });
+      // cuando se fue todo el primer bloque
+      if (Math.abs(x) >= track.scrollWidth / 2) {
+        x = 0;
       }
 
+      track.style.transform = `translateX(${x}px)`;
       animationId = requestAnimationFrame(animate);
     };
 
@@ -69,10 +58,18 @@ function TendenciesCokies() {
     <div className="relative w-full overflow-hidden py-6">
       <div
         ref={trackRef}
-        className="flex flex-nowrap gap-8 px-4"
+        className="flex w-max"
         style={{ willChange: "transform" }}
       >
-        <TendenciesCard tendenciesCoffee={items} />
+        {/* Original */}
+        <div className="flex gap-8 px-4">
+          <TendenciesCard tendenciesCoffee={tendenciesCokies} />
+        </div>
+
+        {/* Duplicado */}
+        <div className="flex gap-8 px-4">
+          <TendenciesCard tendenciesCoffee={tendenciesCokies} />
+        </div>
       </div>
     </div>
   );

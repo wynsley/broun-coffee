@@ -2,9 +2,9 @@ import { AboutUsHistoryContainer } from "../../atoms/aboutUs/AboutUsHistoryConta
 import { Title } from "../../atoms/titles"
 import { Paragraph } from "../../atoms/paragraph"
 
-function AboutUsHistoryBlock() {
+function AboutUsHistoryBlock({ ...props }) {
   return (
-    <AboutUsHistoryContainer>
+    <AboutUsHistoryContainer {...props}>
       
       <Title 
         level="h3" 
@@ -15,7 +15,7 @@ function AboutUsHistoryBlock() {
       
       <Paragraph 
         size="large" 
-        className="max-w-4xl text-gray-200 leading-relaxed font-light break-words"
+        className="max-w-4xl text-gray-200 leading-relaxed font-light wrap-break-words"
         text="Fundado en 2023, Broun Coffee nació del sueño de crear un refugio donde el tiempo se detiene. Lo que comenzó como una pequeña barra de espresso se ha convertido en el corazón de la comunidad, un lugar donde cada taza cuenta una historia y cada cliente se convierte en familia. Aquí no solo servimos café; servimos momentos, tradición y la pasión por lo auténtico."
       />
 

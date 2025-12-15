@@ -22,7 +22,7 @@ function HomeBanner() {
         overflow-hidden
       "
     >
-      {/* Fondo */}
+      {/* Fondo con animación de zoom */}
       <div
         className="
           absolute inset-0 
@@ -31,6 +31,8 @@ function HomeBanner() {
           sm:bg-position-[center_30%]
         "
         style={{ backgroundImage: "url('/HOME_LOGO.jpg')" }}
+        data-aos="zoom-in"
+        data-aos-duration="1500"
       >
         <div className="absolute inset-0 bg-black/50 md:bg-black/40"></div>
       </div>
@@ -49,26 +51,62 @@ function HomeBanner() {
           pt-24 md:pt-0
         "
       >
-        <Title
-          text={title}
-          level="h1"
-          weight="bold"
-          variant="primary"
-          className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 md:mb-6"
-        />
+        {/* Título animado - Aparece desde arriba */}
+        <div
+          data-aos="fade-down"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+          <Title
+            text={title}
+            level="h1"
+            weight="bold"
+            variant="primary"
+            className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 md:mb-6"
+          />
+        </div>
 
-        <Paragraph 
-          text={description}
-          size="large"
-          variant="primary"
-          className="max-w-2xl lg:max-w-3xl mb-6 md:mb-8 lg:mb-10 leading-relaxed"
-        />
+        {/* Descripción animada - Aparece desde abajo */}
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="400"
+        >
+          <Paragraph 
+            text={description}
+            size="large"
+            variant="primary"
+            className="max-w-2xl lg:max-w-3xl mb-6 md:mb-8 lg:mb-10 leading-relaxed"
+          />
+        </div>
 
-        <BannerBgCurve design={1}/>
-        <BannerButtons/>
+        {/* Curva decorativa - Aparece con fade */}
+        <div
+          data-aos="fade"
+          data-aos-duration="800"
+          data-aos-delay="600"
+        >
+          <BannerBgCurve design={1}/>
+        </div>
+
+        {/* Botones - Aparecen con zoom */}
+        <div
+          data-aos="zoom-in"
+          data-aos-duration="800"
+          data-aos-delay="800"
+        >
+          <BannerButtons/>
+        </div>
       </article>
 
-      <BannerCoffee/>
+      {/* Taza de café - Aparece desde la derecha */}
+      <div
+        data-aos="fade-left"
+        data-aos-duration="1200"
+        data-aos-delay="1000"
+      >
+        <BannerCoffee/>
+      </div>
     </section>
   )
 }
