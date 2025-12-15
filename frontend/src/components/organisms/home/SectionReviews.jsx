@@ -36,62 +36,64 @@ function Reviews() {
   ];
 
   return (
-    <section className="flex flex-col items-center justify-center gap-8 md:gap-12 mx-auto w-[92%] mb-20 py-4">
-      <ContTitles/>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-5 gap-4 md:gap-6 w-full lg:h-[650px]">
-        <ReviewCard 
-          title={listReviews[0].title}
-          img={listReviews[0].img}
-          className="lg:col-start-1 lg:row-span-3 h-52 md:h-64 lg:h-full"
-          data-aos="fade-right"
-          data-aos-duration="1000"
-          data-aos-delay="100"
-        />
+    <section className="w-full overflow-hidden">
+      <div className="flex flex-col items-center justify-center gap-8 md:gap-12 mx-auto w-[92%] max-w-full mb-20 py-4">
+        <ContTitles/>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-5 gap-4 md:gap-6 w-full lg:h-[650px]">
+          <ReviewCard 
+            title={listReviews[0].title}
+            img={listReviews[0].img}
+            className="lg:col-start-1 lg:row-span-3 h-52 md:h-64 lg:h-full"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          />
 
-        <ReviewCard 
-          title={listReviews[1].title}
-          img={listReviews[1].img}
-          className="lg:col-start-2 lg:row-span-2 h-52 md:h-64 lg:h-full"
-          data-aos="zoom-in"
-          data-aos-duration="1000"
-          data-aos-delay="200"
-        />
+          <ReviewCard 
+            title={listReviews[1].title}
+            img={listReviews[1].img}
+            className="lg:col-start-2 lg:row-span-2 h-52 md:h-64 lg:h-full"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          />
 
-        <ReviewCard 
-          title={listReviews[2].title}
-          img={listReviews[2].img}
-          className="lg:col-start-3 lg:row-span-3 h-52 md:h-64 lg:h-full"
-          data-aos="fade-left"
-          data-aos-duration="1000"
-          data-aos-delay="100"
-        />
+          <ReviewCard 
+            title={listReviews[2].title}
+            img={listReviews[2].img}
+            className="lg:col-start-3 lg:row-span-3 h-52 md:h-64 lg:h-full"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          />
 
-        <ReviewCard 
-          title={listReviews[3].title}
-          img={listReviews[3].img}
-          className="lg:col-start-1 lg:row-span-2 h-52 md:h-64 lg:h-full"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          data-aos-delay="300"
-        />
+          <ReviewCard 
+            title={listReviews[3].title}
+            img={listReviews[3].img}
+            className="lg:col-start-1 lg:row-span-2 h-52 md:h-64 lg:h-full"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="300"
+          />
 
-        <ReviewCard 
-          title={listReviews[4].title}
-          img={listReviews[4].img}
-          className="lg:col-start-2 lg:row-start-3 lg:row-span-3 h-52 md:h-64 lg:h-full"
-          data-aos="flip-up"
-          data-aos-duration="1000"
-          data-aos-delay="400"
-        />
+          <ReviewCard 
+            title={listReviews[4].title}
+            img={listReviews[4].img}
+            className="lg:col-start-2 lg:row-start-3 lg:row-span-3 h-52 md:h-64 lg:h-full"
+            data-aos="flip-up"
+            data-aos-duration="1000"
+            data-aos-delay="400"
+          />
 
-        <ReviewCard 
-          title={listReviews[5].title}
-          img={listReviews[5].img}
-          className="lg:col-start-3 lg:row-span-2 h-52 md:h-64 lg:h-full"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          data-aos-delay="300"
-        />
+          <ReviewCard 
+            title={listReviews[5].title}
+            img={listReviews[5].img}
+            className="lg:col-start-3 lg:row-span-2 h-52 md:h-64 lg:h-full"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="300"
+          />
+        </div>
       </div>
     </section>
   )

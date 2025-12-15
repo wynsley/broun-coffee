@@ -47,9 +47,11 @@ function HomeBanner() {
           text-white 
           z-10 
           pt-24 md:pt-0
+          overflow-hidden
         "
       >
         <div
+          className="w-full max-w-full"
           data-aos="fade-down"
           data-aos-duration="1000"
           data-aos-delay="200"
@@ -64,6 +66,7 @@ function HomeBanner() {
         </div>
 
         <div
+          className="w-full max-w-full"
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="400"
@@ -75,8 +78,13 @@ function HomeBanner() {
             className="max-w-2xl lg:max-w-3xl mb-6 md:mb-8 lg:mb-10 leading-relaxed"
           />
         </div>
+        
+        <div className="w-full max-w-full overflow-hidden">
           <BannerBgCurve design={1}/>
+        </div>
+        
         <div
+          className="w-full max-w-full"
           data-aos="zoom-in"
           data-aos-duration="800"
           data-aos-delay="800"
@@ -84,7 +92,10 @@ function HomeBanner() {
           <BannerButtons/>
         </div>
       </article>
+      
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <BannerCoffee/>
+      </div>
 
     </section>
   )

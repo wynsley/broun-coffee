@@ -7,7 +7,8 @@ import { VenefitsCoffee } from "../organisms/home/homeVenefitsCoffee";
 
 function HomePage() {
   return (
-    <MyTemplate>
+    <MyTemplate 
+    >
       <HomeBanner />
       <VenefitsCoffee />
       <Tendencies />
