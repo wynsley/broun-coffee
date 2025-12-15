@@ -12,10 +12,7 @@ function CategoryNav({ categories, onSelectCategory }) {
   };
 
   return (
-    // CAMBIOS:
-    // 1. top-[100px]: Baja la barra para que no toque tu menú principal.
-    // 2. justify-start: Alineación izquierda estricta.
-    // 3. pl-4 md:pl-8: Padding izquierdo para que no empiece pegado al borde.
+
     <nav className="sticky mb-4 top-[90px] md:top-[100px] z-40 py-4 bg-[#020202]/95 backdrop-blur-md shadow-2xl border-b border-[#d6c394]/30 transition-all">
       
       <div className="max-w-7xl mx-auto px-4">
