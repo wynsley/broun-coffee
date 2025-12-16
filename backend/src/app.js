@@ -1,14 +1,11 @@
-/* eslint-disable no-undef */
 const dotenv = require('dotenv')
 const express = require('express')
 const { sequelize } = require('./models')
-// Respetamos el middleware global de tu equipo
+// import middleware globales
 const { globalMiddlewares } = require('./middlewares/globalMiddlewares')
 
 // --- 1. IMPORTACIÓN DE RUTAS ---
-
 const { authRouter } = require('./routes/authRuter')
-
 const productRoutes = require('./routes/product.routes')
 const categoryRoutes = require('./routes/category.routes')
 const orderRoutes = require('./routes/order.routes')
@@ -16,6 +13,7 @@ const contactMessageRoutes = require('./routes/contactMessage.routes')
 const {reserveRouter} = require('./routes/reservation.routes')
 const promotionRoutes = require('./routes/promotion.routes')
 
+//leemos el archivo .env
 dotenv.config()
 
 // Inicializamos Express como 'server'
@@ -23,7 +21,6 @@ const server = express()
 const port = process.env.PORT || 3000
 
 // --- MIDDLEWARES GLOBALES ---
-// Usamos la configuración del equipo
 globalMiddlewares({server: server})
 
 // --- DEFINICIÓN DE RUTAS ---

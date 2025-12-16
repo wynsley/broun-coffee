@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser')
 
 const globalMiddlewares = ({ server }) => {
   server.use(cors({
-    origin: true, // <--- CAMBIO: Acepta cualquier origen (ideal para desarrollo)
+    origin: 'http://localhost:5173', 
     credentials: true
   }))
 
